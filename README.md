@@ -1,27 +1,41 @@
-# Carteirinha
+# Projeto de Cadastro de Usuários
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.0.1.
+Este é um projeto de cadastro de usuários desenvolvido com Angular e utilizando a biblioteca de componentes PrimeNG.
 
-## Development server
+## Instalação
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Para instalar as dependências do projeto, utilize o gerenciador de pacotes npm:
 
-## Code scaffolding
+```
+npm install
+```
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Execução
 
-## Build
+Para executar o projeto localmente, utilize o seguinte comando:
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+```
+ng serve
+```
 
-## Running unit tests
+O projeto será executado no endereço `http://localhost:4200/`.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Funcionalidades
 
-## Running end-to-end tests
+O projeto de cadastro de usuários permite ao usuário cadastrar novos usuários com as seguintes informações:
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+- Nome completo
+- Data de nascimento
+- Gênero
+- Escolaridade
+- CPF
+- Celular
+- Instituição
+- Curso
+- E-mail
 
-## Further help
+O projeto também permite listar todos os usuários cadastrados e visualizar suas informações detalhadas.
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+## Contribuição
+
+Contribuições são bem-vindas! Sinta-se livre para abrir issues ou pull requests.
