@@ -16,13 +16,15 @@ import { PanelModule } from 'primeng/panel';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { MenubarModule } from 'primeng/menubar';
+import {NotFoundComponent} from "./components/not-found/not-found.component";
 
 @NgModule({
   declarations: [
     AppComponent,
     CadastroUsuarioComponent,
     ListaUsuariosComponent,
-    NavbarComponent
+    NavbarComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,
