@@ -6,11 +6,13 @@ import { AppComponent } from './app.component';
 import { CadastroUsuarioComponent } from './components/cadastro-usuario/cadastro-usuario.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { ListaUsuariosComponent } from './components/lista-usuario/lista-usuario.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    CadastroUsuarioComponent
+    CadastroUsuarioComponent,
+    ListaUsuariosComponent
   ],
   imports: [
     BrowserModule,
