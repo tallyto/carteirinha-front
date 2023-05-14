@@ -1,46 +1,53 @@
-<h2>Cadastro de Usuário</h2>
+<p-panel header="Cadastro de usuário" [style]="{ 'margin': 'auto', 'width': '50%' }">
+  <form [formGroup]="formCadastro" (ngSubmit)="criarUsuario()">
+    <div class="p-inputgroup mb-2">
+      <span class="p-inputgroup-addon"><i class="pi pi-user"></i></span>
+      <input type="text" pInputText class="form-control" formControlName="nome" placeholder="Nome completo" required>
+    </div>
 
-<form [formGroup]="formCadastro" (ngSubmit)="criarUsuario()">
-  <div class="form-group">
-    <label for="nome">Nome completo</label>
-    <input type="text" class="form-control" id="nome" formControlName="nome" required>
-  </div>
-  <div class="form-group">
-    <label for="dataNascimento">Data de nascimento</label>
-    <input type="date" class="form-control" id="dataNascimento" formControlName="dataNascimento" required>
-  </div>
-  <div class="form-group">
-    <label for="genero">Gênero</label>
-    <select class="form-control" id="genero" formControlName="genero" required>
-      <option *ngFor="let genero of generos" [value]="genero.id">{{ genero.nome }}</option>
-    </select>
-  </div>
-  <div class="form-group">
-    <label for="escolaridade">Escolaridade</label>
-    <select class="form-control" id="escolaridade" formControlName="escolaridade" required>
-      <option *ngFor="let escolaridade of escolaridades" [value]="escolaridade.id">{{ escolaridade.nome }}</option>
-    </select>
-  </div>
-  <div class="form-group">
-    <label for="cpf">CPF</label>
-    <input type="text" class="form-control" id="cpf" formControlName="cpf" required>
-  </div>
-  <div class="form-group">
-    <label for="celular">Celular</label>
-    <input type="text" class="form-control" id="celular" formControlName="celular" required>
-  </div>
-  <div class="form-group">
-    <label for="instituicao">Instituição</label>
-    <input type="text" class="form-control" id="instituicao" formControlName="instituicao" required>
-  </div>
-  <div class="form-group">
-    <label for="curso">Curso</label>
-    <input type="text" class="form-control" id="curso" formControlName="curso" required>
-  </div>
-  <div class="form-group">
-    <label for="email">Email</label>
-    <input type="email" class="form-control" id="email" formControlName="email" required>
-  </div>
+    <div class="p-inputgroup mb-2">
+      <span class="p-inputgroup-addon"><i class="pi pi-calendar"></i></span>
+      <p-calendar id="dataNascimento" formControlName="dataNascimento" placeholder="Data de nascimento"
+        dateFormat="dd/mm/yy" [minDate]="minDate"></p-calendar>
+    </div>
 
-  <button type="submit" class="btn btn-primary">Cadastrar</button>
-</form>
+    <div class="p-inputgroup mb-2">
+      <span class="p-inputgroup-addon"><i class="pi pi-user-plus"></i></span>
+      <p-dropdown [options]="generos" formControlName="genero" optionLabel="nome" placeholder="Genero"></p-dropdown>
+    </div>
+
+    <div class="p-inputgroup mb-2">
+      <span class="p-inputgroup-addon"><i class="pi pi-user"></i></span>
+      <p-dropdown [options]="escolaridades" formControlName="escolaridade" optionLabel="nome"
+        placeholder="Escolaridade"></p-dropdown>
+    </div>
+
+    <div class="p-inputgroup mb-2">
+      <span class="p-inputgroup-addon"><i class="pi pi-id-card"></i></span>
+      <input type="text" pInputText class="form-control" formControlName="cpf" placeholder="CPF" required>
+    </div>
+
+    <div class="p-inputgroup mb-2">
+      <span class="p-inputgroup-addon"><i class="pi pi-mobile"></i></span>
+      <input type="text" pInputText class="form-control" formControlName="celular" placeholder="Celular" required>
+    </div>
+
+    <div class="p-inputgroup mb-2">
+      <span class="p-inputgroup-addon"><i class="pi pi-briefcase"></i></span>
+      <input type="text" pInputText class="form-control" formControlName="instituicao" placeholder="Instituição"
+        required>
+    </div>
+
+    <div class="p-inputgroup mb-2">
+      <span class="p-inputgroup-addon"><i class="pi pi-book"></i></span>
+      <input type="text" pInputText class="form-control" formControlName="curso" placeholder="Curso" required>
+    </div>
+
+    <div class="p-inputgroup mb-2">
+      <span class="p-inputgroup-addon"><i class="pi pi-envelope"></i></span>
+      <input type="email" pInputText class="form-control" formControlName="email" placeholder="Email" required>
+    </div>
+
+    <p-button type="submit">Cadastrar</p-button>
+  </form>
+</p-panel>

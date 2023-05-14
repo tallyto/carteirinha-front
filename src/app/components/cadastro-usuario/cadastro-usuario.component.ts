@@ -27,10 +27,13 @@ export class CadastroUsuarioComponent implements OnInit {
     { id: 6, nome: 'Ensino superior completo' }
   ];
 
+  minDate: Date;
+
   constructor(private formBuilder: FormBuilder, private usuarioService: UsuarioService) {
     this.formCadastro = {} as FormGroup;
     this.usuarioSelecionado = {} as Usuario;
     this.usuarios = [] as Usuario[];
+    this.minDate = new Date('1900-01-01');
   }
 
   ngOnInit(): void {
