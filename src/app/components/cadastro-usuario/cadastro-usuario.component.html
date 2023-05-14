@@ -1,0 +1,46 @@
+<h2>Cadastro de Usuário</h2>
+
+<form [formGroup]="formCadastro" (ngSubmit)="criarUsuario()">
+  <div class="form-group">
+    <label for="nome">Nome completo</label>
+    <input type="text" class="form-control" id="nome" formControlName="nome" required>
+  </div>
+  <div class="form-group">
+    <label for="dataNascimento">Data de nascimento</label>
+    <input type="date" class="form-control" id="dataNascimento" formControlName="dataNascimento" required>
+  </div>
+  <div class="form-group">
+    <label for="genero">Gênero</label>
+    <select class="form-control" id="genero" formControlName="genero" required>
+      <option *ngFor="let genero of generos" [value]="genero.id">{{ genero.nome }}</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="escolaridade">Escolaridade</label>
+    <select class="form-control" id="escolaridade" formControlName="escolaridade" required>
+      <option *ngFor="let escolaridade of escolaridades" [value]="escolaridade.id">{{ escolaridade.nome }}</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="cpf">CPF</label>
+    <input type="text" class="form-control" id="cpf" formControlName="cpf" required>
+  </div>
+  <div class="form-group">
+    <label for="celular">Celular</label>
+    <input type="text" class="form-control" id="celular" formControlName="celular" required>
+  </div>
+  <div class="form-group">
+    <label for="instituicao">Instituição</label>
+    <input type="text" class="form-control" id="instituicao" formControlName="instituicao" required>
+  </div>
+  <div class="form-group">
+    <label for="curso">Curso</label>
+    <input type="text" class="form-control" id="curso" formControlName="curso" required>
+  </div>
+  <div class="form-group">
+    <label for="email">Email</label>
+    <input type="email" class="form-control" id="email" formControlName="email" required>
+  </div>
+
+  <button type="submit" class="btn btn-primary">Cadastrar</button>
+</form>
