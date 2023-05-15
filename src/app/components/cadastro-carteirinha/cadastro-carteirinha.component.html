@@ -1,0 +1,36 @@
+<p-messages [(value)]="msgs"></p-messages>
+
+<div class="p-card p-fluid"  [style]="{ 'margin': 'auto', 'width': '50%' }">
+  <h1>Cadastro de Carteirinha</h1>
+  <form [formGroup]="carteirinhaForm" (ngSubmit)="onSubmit()">
+    <div class="p-field">
+      <label for="numero">Número</label>
+      <input pInputText id="numero" formControlName="numero" />
+      <small class="p-error" *ngIf="carteirinhaForm.get('numero')?.invalid && (carteirinhaForm.get('numero')?.dirty || carteirinhaForm.get('numero')?.touched)">
+        Número é obrigatório.
+      </small>
+    </div>
+    <div class="p-field">
+      <label for="dataEmissao">Data de emissão</label>
+      <p-calendar id="dataEmissao" formControlName="dataEmissao"></p-calendar>
+      <small class="p-error" *ngIf="carteirinhaForm.get('dataEmissao')?.invalid && (carteirinhaForm.get('dataEmissao')?.dirty || carteirinhaForm.get('dataEmissao')?.touched)">
+        Data de emissão é obrigatória.
+      </small>
+    </div>
+    <div class="p-field">
+      <label for="dataValidade">Data de validade</label>
+      <p-calendar id="dataValidade" formControlName="dataValidade"></p-calendar>
+      <small class="p-error" *ngIf="carteirinhaForm.get('dataValidade')?.invalid && (carteirinhaForm.get('dataValidade')?.dirty || carteirinhaForm.get('dataValidade')?.touched)">
+        Data de validade é obrigatória.
+      </small>
+    </div>
+    <div class="p-field">
+      <label for="usuario">Usuário</label>
+      <input pInputText id="usuario" formControlName="usuario" />
+      <small class="p-error" *ngIf="carteirinhaForm.get('usuario')?.invalid && (carteirinhaForm.get('usuario')?.dirty || carteirinhaForm.get('usuario')?.touched)">
+        Usuário é obrigatório.
+      </small>
+    </div>
+    <button pButton type="submit" label="Cadastrar"></button>
+  </form>
+</div>

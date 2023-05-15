@@ -3,5 +3,7 @@ export interface Carteirinha {
   numero: string;
   dataEmissao: string;
   dataValidade: string;
-  usuario_id: number;
+  usuario: {
+    id: string;
+  }
 }

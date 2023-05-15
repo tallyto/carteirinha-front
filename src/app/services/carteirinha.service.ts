@@ -16,4 +16,8 @@ export class CarteirinhaService {
     return this.http.get<Carteirinha[]>(this.apiUrl);
   }
 
+  cadastrar(carteirinha: Carteirinha): Observable<Carteirinha> {
+    return this.http.post<Carteirinha>(this.apiUrl, carteirinha);
+  }
+
 }

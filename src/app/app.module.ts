@@ -19,6 +19,9 @@ import { MenubarModule } from 'primeng/menubar';
 import {NotFoundComponent} from "./components/not-found/not-found.component";
 import { CarteirinhaListaComponent } from './components/carteirinha-lista/carteirinha-lista.component';
 import {CardModule} from "primeng/card";
+import { CadastroCarteirinhaComponent } from './components/cadastro-carteirinha/cadastro-carteirinha.component';
+import {MessageService} from "primeng/api";
+import {MessagesModule} from "primeng/messages";
 
 @NgModule({
   declarations: [
@@ -27,7 +30,8 @@ import {CardModule} from "primeng/card";
     ListaUsuariosComponent,
     NavbarComponent,
     NotFoundComponent,
-    CarteirinhaListaComponent
+    CarteirinhaListaComponent,
+    CadastroCarteirinhaComponent
   ],
   imports: [
     BrowserModule,
@@ -42,9 +46,10 @@ import {CardModule} from "primeng/card";
     PanelModule,
     BrowserAnimationsModule,
     MenubarModule,
-    CardModule
+    CardModule,
+    MessagesModule
   ],
-  providers: [],
+  providers: [MessageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
