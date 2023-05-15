@@ -28,6 +28,22 @@ export class NavbarComponent implements OnInit{
             icon: 'pi pi-fw pi-users',
             routerLink: "/lista-usuario"
           }
+        ],
+      },
+      {
+        label: 'Carteirinha',
+        icon: 'pi pi-fw pi-id-card',
+        items: [
+          {
+            label: 'New',
+            icon: 'pi pi-fw pi-save',
+            routerLink: "/cadastro-carteirinha"
+          },
+          {
+            label: 'List',
+            icon: 'pi pi-fw pi-book',
+            routerLink: "/lista-carteirinha"
+          }
         ]
       }
     ]

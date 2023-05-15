@@ -17,6 +17,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { MenubarModule } from 'primeng/menubar';
 import {NotFoundComponent} from "./components/not-found/not-found.component";
+import { CarteirinhaListaComponent } from './components/carteirinha-lista/carteirinha-lista.component';
+import {CardModule} from "primeng/card";
 
 @NgModule({
   declarations: [
@@ -24,7 +26,8 @@ import {NotFoundComponent} from "./components/not-found/not-found.component";
     CadastroUsuarioComponent,
     ListaUsuariosComponent,
     NavbarComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    CarteirinhaListaComponent
   ],
   imports: [
     BrowserModule,
@@ -38,7 +41,8 @@ import {NotFoundComponent} from "./components/not-found/not-found.component";
     CalendarModule,
     PanelModule,
     BrowserAnimationsModule,
-    MenubarModule
+    MenubarModule,
+    CardModule
   ],
   providers: [],
   bootstrap: [AppComponent]
