@@ -34,17 +34,30 @@ export class CadastroCarteirinhaComponent {
           this.carteirinhaForm.reset();
           this.messageService.add({
             severity: 'success',
-            summary: 'Carteirinha cadastrada com sucesso!'
+            summary: 'Carteirinha cadastrada com sucesso!',
+            life: 3000
           });
         },
         () => {
           this.messageService.add({
             severity: 'error',
-            summary: 'Erro ao cadastrar carteirinha'
+            summary: 'Erro ao cadastrar carteirinha',
+            life: 3000
           });
         }
       );
+    } else {
+      this.markFormGroupTouched(this.carteirinhaForm);
     }
+  }
+
+  markFormGroupTouched(formGroup: FormGroup) {
+    Object.values(formGroup.controls).forEach(control => {
+      control.markAsTouched();
+      if (control instanceof FormGroup) {
+        this.markFormGroupTouched(control);
+      }
+    });
   }
 
 }
