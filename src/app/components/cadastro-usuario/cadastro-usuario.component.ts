@@ -1,7 +1,12 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Usuario } from 'src/app/models/usuario.model';
-import { UsuarioService } from 'src/app/services/usuario.service';
+import {Component, OnInit} from '@angular/core';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {Usuario} from 'src/app/models/usuario.model';
+import {UsuarioService} from 'src/app/services/usuario.service';
+import {Escolaridade} from "../../models/escolaridade.model";
+import {EscolaridadeService} from "../../services/escolaridade.service";
+import {Genero} from "../../models/genero.model";
+import {GeneroService} from "../../services/genero.service";
+import {Message, MessageService} from "primeng/api";
 
 @Component({
   selector: 'app-cadastro-usuario',
@@ -13,23 +18,19 @@ export class CadastroUsuarioComponent implements OnInit {
   formCadastro: FormGroup;
   usuarios: Usuario[];
   usuarioSelecionado: Usuario;
-  generos = [
-    { id: 1, nome: 'Feminino' },
-    { id: 2, nome: 'Masculino' },
-    { id: 3, nome: 'Outro' }
-  ];
-  escolaridades = [
-    { id: 1, nome: 'Ensino fundamental incompleto' },
-    { id: 2, nome: 'Ensino fundamental completo' },
-    { id: 3, nome: 'Ensino médio incompleto' },
-    { id: 4, nome: 'Ensino médio completo' },
-    { id: 5, nome: 'Ensino superior incompleto' },
-    { id: 6, nome: 'Ensino superior completo' }
-  ];
+  generos: Genero[] = [] as any;
+  escolaridades: Escolaridade[] = [] as any;
+  msgs: Message[] = [];
 
   minDate: Date;
 
-  constructor(private formBuilder: FormBuilder, private usuarioService: UsuarioService) {
+  constructor(
+    private formBuilder: FormBuilder,
+    private usuarioService: UsuarioService,
+    private escolaridadeService: EscolaridadeService,
+    private generoService: GeneroService,
+    private messageService: MessageService
+  ) {
     this.formCadastro = {} as FormGroup;
     this.usuarioSelecionado = {} as Usuario;
     this.usuarios = [] as Usuario[];
@@ -48,24 +49,54 @@ export class CadastroUsuarioComponent implements OnInit {
       curso: ['', Validators.required],
       email: ['', Validators.required]
     });
-    this.listarUsuarios();
+    this.buscaEscolaridades()
+    this.buscaGeneros()
   }
 
-  listarUsuarios(): void {
-    this.usuarioService.listar().subscribe(
-      usuarios => this.usuarios = usuarios,
-      error => console.log(error)
-    );
+  buscaEscolaridades(): void {
+    this.escolaridadeService.getAll().subscribe(
+      {
+        next: (escolaridade) => {
+          this.escolaridades = escolaridade;
+        }
+      }
+    )
+
   }
+
+  buscaGeneros(): void {
+    this.generoService.getAll().subscribe(
+      {
+        next: (genero) => {
+          this.generos = genero;
+        }
+      }
+    )
+
+  }
+
 
   criarUsuario(): void {
     const usuario = this.formCadastro.value as Usuario;
     this.usuarioService.cadastrar(usuario).subscribe(
-      () => {
-        this.formCadastro.reset();
-        this.listarUsuarios();
-      },
-      error => console.log(error)
+      {
+        next: () => {
+          this.messageService.add({
+            severity: 'success',
+            summary: 'Usuário cadastrado com sucesso!',
+            life: 3000
+          });
+          this.formCadastro.reset();
+        },
+        error: (error) => {
+          this.messageService.add({
+            severity: 'error',
+            summary: 'Erro ao cadastrar usuário',
+            life: 3000
+          });
+          console.log(error)
+        }
+      }
     );
   }
 
@@ -75,7 +106,6 @@ export class CadastroUsuarioComponent implements OnInit {
       () => {
         this.formCadastro.reset();
         this.usuarioSelecionado = {} as Usuario;
-        this.listarUsuarios();
       },
       error => console.log(error)
     );
@@ -83,7 +113,6 @@ export class CadastroUsuarioComponent implements OnInit {
 
   removerUsuario(usuario: Usuario): void {
     this.usuarioService.remover(usuario.id!).subscribe(
-      () => this.listarUsuarios(),
       error => console.log(error)
     );
   }

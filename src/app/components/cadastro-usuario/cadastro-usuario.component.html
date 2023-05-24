@@ -1,3 +1,5 @@
+<p-messages [(value)]="msgs"></p-messages>
+
 <p-panel header="Cadastro de usuário" [style]="{ 'margin': 'auto', 'width': '50%' }">
   <form [formGroup]="formCadastro" (ngSubmit)="criarUsuario()">
     <div class="p-inputgroup mb-2">
